@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
+@RestController
+@RequestMapping("/polls")
 public class PollController {
   private final PollManager pollManager;
 
