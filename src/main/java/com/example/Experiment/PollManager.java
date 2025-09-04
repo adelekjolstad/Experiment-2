@@ -51,7 +51,16 @@ public class PollManager {
     this.polls = polls;
   }
 
+  public VoteOption getVoteOptions(long id) {
+    return votesOptions.get(id);
+  }
+
+  public void addVotes(Long id, VoteOption voteOptions) {
+    votesOptions.put(id, voteOptions);
+  }
+
   private Map<String, User> users = new HashMap<>();
   private Map<Long, Poll> polls = new HashMap<>();
+  private Map<Long, VoteOption> votesOptions = new HashMap<>();
   private long nextPollId = 1;
 }
