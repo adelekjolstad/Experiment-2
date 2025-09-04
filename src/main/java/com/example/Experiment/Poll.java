@@ -1,6 +1,7 @@
 package com.example.Experiment;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Poll {
@@ -57,7 +58,7 @@ public class Poll {
   private Instant validUntil;
   private long id;
   private User createdBy;
-  private List<VoteOption> options;
+  private List<VoteOption> options = new ArrayList<>();
 
   public Poll() {}
 
