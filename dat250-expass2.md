@@ -8,4 +8,4 @@ At the beginning, i had issues with duplicated users, which i resolved by correc
 
 I also faced problems wihle testing polls: Creating a single poll returned two when all tests were run together. This was fixed by resetting the "pollManager" before each test. 
 
-I decided not to create a separate voteOption controller. Instead, all the voting logic was implemented directly in the PollController. 
+I decided not to create a separate voteOption controller. Instead, all the votingOption logic was implemented directly in the PollController. 
