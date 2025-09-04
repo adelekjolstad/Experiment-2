@@ -11,8 +11,22 @@ public class PollManager {
     return users;
   }
 
+  public User getUser(String username) {
+    return users.get(username);
+  }
+
+  public void deleteUser(String username) {
+    users.remove(username);
+  }
+
   public Map<Long, Poll> getPolls() {
     return polls;
+  }
+
+  public User addUser(User user) {
+    users.put(user.getUsername(), user);
+    users.put(user.getEmail(), user);
+    return user;
   }
 
   public void setUsers(Map<String, User> users) {
