@@ -19,6 +19,10 @@ public class PollManager {
     users.remove(username);
   }
 
+  public void deletePoll(long id) {
+    polls.remove(id);
+  }
+
   public Map<Long, Poll> getPolls() {
     return polls;
   }
@@ -26,6 +30,17 @@ public class PollManager {
   public User addUser(User user) {
     users.put(user.getUsername(), user);
     return user;
+  }
+
+  public Poll addPoll(Poll poll) {
+    poll.setId(nextPollId);
+    polls.put(nextPollId,poll);
+    nextPollId++;
+    return poll;
+  }
+
+  public Poll getPoll(long id) {
+    return polls.get(id);
   }
 
   public void setUsers(Map<String, User> users) {
@@ -38,4 +53,5 @@ public class PollManager {
 
   private Map<String, User> users = new HashMap<>();
   private Map<Long, Poll> polls = new HashMap<>();
+  private long nextPollId = 1;
 }

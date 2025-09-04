@@ -36,9 +36,27 @@ public class Poll {
     this.options = options;
   }
 
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public User getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(User createdBy) {
+    this.createdBy = createdBy;
+  }
+
   private String question;
   private Instant publishedAt;
   private Instant validUntil;
+  private long id;
+  private User createdBy;
   private List<VoteOption> options;
 
   public Poll() {}
