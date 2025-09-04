@@ -17,10 +17,8 @@ public class VoteOption {
     this.presentationOrder = presentationOrder;
   }
 
-  private String caption;
-  private int presentationOrder;
-
   public VoteOption() {};
 
-
+  private String caption;
+  private int presentationOrder;
 }
