@@ -12,6 +12,11 @@ public class PollManager {
   private Map<Long, VoteOption> votesOptions = new HashMap<>();
 
   private Map<Long, Map<String, Vote>> votesByPoll = new HashMap<>();
+
+  public void setNextPollId(long nextPollId) {
+    this.nextPollId = nextPollId;
+  }
+
   private long nextPollId = 1;
 
   public Map<String, User> getUsers() {
