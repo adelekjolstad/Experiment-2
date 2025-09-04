@@ -24,7 +24,7 @@ public class PollController {
   }
 
   @GetMapping("/{id}")
-  public Poll getPoll(@PathVariable int id) {
+  public Poll getPoll(@PathVariable long id) {
     return pollManager.getPoll(id);
   }
 

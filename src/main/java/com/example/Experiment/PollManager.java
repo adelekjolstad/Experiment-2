@@ -2,11 +2,18 @@ package com.example.Experiment;
 
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class PollManager {
+
+  private Map<String, User> users = new HashMap<>();
+  private Map<Long, Poll> polls = new HashMap<>();
+  private Map<Long, VoteOption> votesOptions = new HashMap<>();
+
+  private Map<Long, Map<String, Vote>> votesByPoll = new HashMap<>();
+  private long nextPollId = 1;
+
   public Map<String, User> getUsers() {
     return users;
   }
@@ -55,12 +62,20 @@ public class PollManager {
     return votesOptions.get(id);
   }
 
-  public void addVotes(Long id, VoteOption voteOptions) {
-    votesOptions.put(id, voteOptions);
+  public void addVotesByPoll(Long id, Vote vote) {
+    if (vote == null || vote.getUser() == null) {
+      throw new IllegalArgumentException("Vote or User cannot be null");
+    }
+    votesByPoll.putIfAbsent(id, new HashMap<>());
+    votesByPoll.get(id).put(vote.getUser().getUsername(), vote);
+
   }
 
-  private Map<String, User> users = new HashMap<>();
-  private Map<Long, Poll> polls = new HashMap<>();
-  private Map<Long, VoteOption> votesOptions = new HashMap<>();
-  private long nextPollId = 1;
+  public Collection<Vote> getVotes(long id) {
+    return votesByPoll.getOrDefault(id, Map.of()).values();
+  }
+
+
+
+
 }
