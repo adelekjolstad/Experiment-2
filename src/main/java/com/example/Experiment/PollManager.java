@@ -25,7 +25,6 @@ public class PollManager {
 
   public User addUser(User user) {
     users.put(user.getUsername(), user);
-    users.put(user.getEmail(), user);
     return user;
   }
 
