@@ -1,8 +1,22 @@
 package com.example.Experiment;
 
+import jakarta.persistence.*;
+
 import java.time.Instant;
 
+@Entity
 public class Vote {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
+  private Instant publishedAt;
+  @ManyToOne
+  @JoinColumn(name = "vote_option_id")
+  private VoteOption voteOption;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
+
   public Instant getPublishedAt() {
     return publishedAt;
   }
@@ -18,6 +32,9 @@ public class Vote {
   public User getUser() {
     return user;
   }
+  public long getId() {
+    return id;
+  }
 
   public void setVoteOption(VoteOption voteOption) {
     this.voteOption = voteOption;
@@ -27,9 +44,6 @@ public class Vote {
     this.user = user;
   }
 
-  private Instant publishedAt;
-  private VoteOption voteOption;
-  private User user;
 
   public Vote() {}
 }

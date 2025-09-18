@@ -1,10 +1,35 @@
 package com.example.Experiment;
 
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "polls")
 public class Poll {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
+  private String question;
+  private Instant publishedAt;
+  private Instant validUntil;
+  @ManyToOne
+  @JoinColumn(name = "created_by")
+  private User createdBy;
+
+  @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
+  private List<VoteOption> options = new ArrayList<>();
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public long getId() {
+    return id;
+  }
+
   public String getQuestion() {
     return question;
   }
@@ -37,13 +62,6 @@ public class Poll {
     this.options = options;
   }
 
-  public void setId(long id) {
-    this.id = id;
-  }
-
-  public long getId() {
-    return id;
-  }
 
   public User getCreatedBy() {
     return createdBy;
@@ -53,12 +71,15 @@ public class Poll {
     this.createdBy = createdBy;
   }
 
-  private String question;
-  private Instant publishedAt;
-  private Instant validUntil;
-  private long id;
-  private User createdBy;
-  private List<VoteOption> options = new ArrayList<>();
+  public VoteOption addVoteOption(String caption) {
+    VoteOption option = new VoteOption();
+    option.setCaption(caption);
+    option.setPresentationOrder(options.size());
+    option.setPoll(this);
+    options.add(option);
+
+    return option;
+  }
 
   public Poll() {}
 

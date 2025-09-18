@@ -105,7 +105,5 @@ public class TestApi {
     assertEquals("Java", voteResponse.getBody().getVoteOption().getCaption());
   }
 
-
-
 }
 
