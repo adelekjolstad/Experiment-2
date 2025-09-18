@@ -9,8 +9,11 @@ I also ran into problems with OneToMany and ManyToOne relationsships that were n
 https://github.com/adelekjolstad/Experiment-2/tree/main/src
 
 
+## Inspected the database tables
+I have enabled the H2 console and use it to inspect the database
+<img width="1171" height="715" alt="image" src="https://github.com/user-attachments/assets/1070002d-8c8a-4003-829a-bcf622dea30d" />
 
 
-an explanation of how you inspected the database tables and what tables were created. For the latter, you may provide screenshots.
+
 
 
